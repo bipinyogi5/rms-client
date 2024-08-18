@@ -1,0 +1,47 @@
+<!-- my-orders.component.html -->
+<div *ngIf="orders && orders.success">
+    <div class="container mt-4">
+      <h2>My Orders</h2>
+      <div class="row">
+        <div *ngFor="let order of orders.orders" class="col-md-12 mb-4">
+          <div class="card">
+            <div class="card-header">
+              <h3>Order ID: {{ order.id }}</h3>
+            </div>
+            <div class="card-body">
+              <p><strong>Description:</strong> {{ order.description }}</p>
+              <p><strong>Quantity:</strong> {{ order.quantity }}</p>
+              <p><strong>Table:</strong> {{ order.tableId }}</p>
+              <p><strong>Total Price:</strong> {{ order.totalPrice | currency }}</p>
+              <p><strong>Status:</strong> {{ order.orderStatus }}</p>
+  
+              <div *ngIf="order.orderFoodItems && order.orderFoodItems.length > 0">
+                <h4>Food Items:</h4>
+                <div class="row">
+                  <div *ngFor="let item of order.orderFoodItems" class="col-md-6 mb-4">
+                    <div class="card">
+                      <img [src]="item['food-item'].imageUrl" class="card-img-top" alt="{{ item['food-item'].name }}">
+                      <div class="card-body">
+                        <h5 class="card-title">{{ item['food-item'].name }}</h5>
+                        <p class="card-text">
+                          <strong>Description:</strong> {{ item['food-item'].description }}<br>
+                          <strong>Quantity:</strong> {{ item.quantity }}<br>
+                          <strong>Price:</strong> {{ item.price | currency }}<br>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="orders && !orders.success" class="container mt-4">
+    <div class="alert alert-danger" role="alert">
+      Failed to fetch orders. Please try again later.
+    </div>
+  </div>
+  

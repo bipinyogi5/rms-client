@@ -1,0 +1,15 @@
+# HTTPS server block for admin.codebyte.tech
+server {
+    listen 443 ssl;
+    server_name ims.codebyte.tech;
+
+    ssl_certificate /etc/letsencrypt/live/ims.codebyte.tech/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/ims.codebyte.tech/privkey.pem;
+    ssl_trusted_certificate /etc/letsencrypt/live/ims.codebyte.tech/chain.pem;
+
+    location / {
+        root /home/codes/test;
+        index index.html;
+        try_files $uri $uri/ =404;
+    }
+}

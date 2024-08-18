@@ -1,0 +1,36 @@
+/* specials.component.css */
+
+.specials-tabs {
+    margin: 20px 0;
+  }
+  
+  .mat-tab-group {
+    background: #f8f9fa; /* Optional: Change background color if needed */
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .mat-tab-labels {
+    background: #ffffff;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .mat-tab-label {
+    font-weight: bold;
+    padding: 16px 24px;
+  }
+  
+  .mat-tab-label-active {
+    color: #007bff; /* Active tab color */
+    border-bottom: 3px solid #007bff; /* Tab underline */
+  }
+  
+  .mat-tab-body-content {
+    padding: 20px;
+  }
+  
+  .mat-tab-body-content img {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+  

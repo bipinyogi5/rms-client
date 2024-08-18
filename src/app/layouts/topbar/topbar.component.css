@@ -1,0 +1,29 @@
+.header_section {
+  position: fixed; /* Fixes the navbar at the top */
+  top: 0; /* Ensures it sticks to the top */
+  left: 0; /* Aligns it to the left */
+  width: 100%; /* Full width of the viewport */
+  z-index: 2; /* Ensures it stays above other elements */
+  margin-bottom: 0; /* Remove bottom margin */
+}
+
+
+.navbar {
+  transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+.navbar.scrolled {
+}
+
+
+.cart_link {
+  position: relative;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -15px; /* Adjust this value to position the badge as desired */
+  right: -15px; /* Adjust this value to position the badge as desired */
+  border-radius: 50%; /* Makes the badge round */
+  padding: 5px 8px; /* Adjust padding as needed */
+}

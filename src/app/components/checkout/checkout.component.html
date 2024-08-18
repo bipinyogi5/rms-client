@@ -1,0 +1,117 @@
+<section class="content mt-4 mb-4">
+  <div class="row">
+    <div class="col-12 col-lg-8">
+      <div class="card">
+        <div class="card-header bg-primary">
+          <h4 class="card-title text-white">YOUR CART ({{ cartItems.length }} ITEMS)</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>Image</th>
+                  <th>Product info</th>
+                  <th>Price</th>
+                  <th>Quantity</th>
+                  <th>Total</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of cartItems">
+                  <td><img [src]="item.imageUrl" alt="" class="img-fluid" style="max-width: 80px;"></td>
+                  <td>
+                    <h5 class="card-title">{{ item.name }}</h5>
+                    <p class="card-text">{{ item.description }}</p>
+                  </td>
+                  <td>{{ item.price }}</td>
+                  <td width="70">
+                      <input type="number" class="form-control" [(ngModel)]="item.quantity" (ngModelChange)="updateQuantity(item, $event)" placeholder="o" min="1">
+                  </td>
+                  <td>{{ item.price * item.quantity }}</td>
+                  <td align="center"><button class="btn btn-danger btn-sm" (click)="removeFromCart(item)" title="Delete"><i class="bi bi-trash"></i></button></td>
+                </tr>
+              </tbody>
+            </table>
+            <button class="btn btn-info float-end me-2 mt-3" (click)="continueShopping()">
+              <i class="fa fa-arrow-left"></i> Continue shopping
+            </button>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-4">
+      <div class="card">
+        <div class="card-header bg-success">
+          <h4 class="card-title text-white">Discount</h4>
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="mb-3">
+              <label for="discountCoupon" class="form-label">Enter your discount coupon:</label>
+              <input type="text" class="form-control" id="discountCoupon" >
+            </div>
+            <!-- You can add more fields for additional discount-related information if needed -->
+            <button type="submit" class="btn btn-primary">Apply Discount</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="card mt-4">
+        <div class="card-header bg-info">
+          <h4 class="card-title text-white">Cart Summary</h4>
+        </div>
+        <div class="card-body">
+          <table class="table simple mb-0">
+            <tbody>
+              <tr>
+                <td>Total</td>
+                <td class="text-end fw-700">₹ {{ total }}</td>
+              </tr>
+              <tr>
+                <td>Sub Total</td>
+                <td class="text-end fw-700">₹ {{ subTotal }}</td>
+              </tr>
+             <tr>
+              <tr>
+                <td>Table No</td>
+                <td class="text-end">
+                  <select class="form-select" [(ngModel)]="selectedTableId" name="tableId" required>
+                    <option *ngFor="let table of tables" [value]="table.id">{{ table.name }}</option>
+                  </select>
+                  
+                  <div *ngIf="formStructure.get('tableId').invalid && (formStructure.get('tableId').dirty || formStructure.get('tableId').touched)" class="text-danger">
+                    Table is required.
+                  </div> 
+                </td>
+              </tr>
+              <tr>
+      <td>Remark</td>
+      <td class="text-end">
+        <input type="text" class="form-control" [(ngModel)]="remark" placeholder="Enter your remark here">
+      </td>
+    </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer">  
+          <button class="btn btn-danger" onclick="clearCart()">Cancel Order</button>
+          <button class="btn btn-primary float-end" [disabled]="!loggedIn || isOrderQtyZero() || null" (click)="createOrder()">Place Order</button>
+        </div>
+      </div> 
+
+      <div class="card mt-4">
+        <div class="card-header bg-dark">
+          <h4 class="card-title text-white">Support</h4>
+        </div>
+        <div class="card-body">
+          <p>Toll-Free Number: 100354554</p>
+          <!-- Other support contact information can be added here -->
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>

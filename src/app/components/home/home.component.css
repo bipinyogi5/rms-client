@@ -1,0 +1,48 @@
+.carousel-container {
+  width: 100%;
+  max-width: 100%; 
+  margin: 0 auto; 
+}
+
+.carousel-image {
+  width: 100%;
+  height: auto;
+  max-height: 400px; 
+  object-fit: cover; 
+}
+.offer_section {
+  width: 100%;
+  background-color: #343a40; 
+  color: white; 
+  padding: 20px 0; 
+}
+
+.offer_container {
+  width: 100%;
+  max-width: 1200px; 
+  margin: 0 auto; 
+  display: flex; 
+  justify-content: center; 
+  flex-wrap: wrap;
+}
+
+.box {
+  flex: 1 0 45%;
+  margin: 15px; 
+  background-color: #fff; 
+  border-radius: 8px;
+  overflow: hidden; 
+}
+
+.img-box img {
+  width: 100%;
+  height: auto; 
+}
+
+.detail-box {
+  padding: 15px;
+}
+
+h5, h6 {
+  color: #000; 
+}
